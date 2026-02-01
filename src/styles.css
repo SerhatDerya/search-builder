@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface-muted text-text-primary antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  /* Visible focus for keyboard accessibility */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white;
+  }
+  input::placeholder {
+    @apply text-text-muted;
+  }
+}
+
+@layer components {
+  .input-base {
+    @apply w-full rounded-md border border-border bg-surface px-3 py-2.5 text-body text-text-primary placeholder-text-muted transition-colors;
+    @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:ring-offset-0;
+    min-height: 40px;
+  }
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+    min-height: 44px;
+  }
+  .btn-primary {
+    @apply btn-base bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply btn-base border border-border-strong bg-surface text-text-secondary shadow-card hover:bg-surface-muted hover:border-border-strong active:bg-slate-100 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .chip-base {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md border px-3 py-2 text-caption font-medium transition-colors;
+    min-height: 36px;
+  }
+  .chip-default {
+    @apply chip-base border-border bg-surface-muted text-text-secondary hover:border-border-strong hover:bg-slate-200/60;
+  }
+  .chip-selected {
+    @apply chip-base border-primary-600 bg-primary-600 text-white hover:bg-primary-700;
+  }
+  .section-label {
+    @apply mb-2 block text-label text-text-secondary;
+  }
+  .card {
+    @apply rounded-lg border border-border bg-surface-elevated p-4 shadow-card;
+  }
+}
